@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> azure pricing app</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="container">
+        <h1>Cloud Instance Pricing Comparison</h1>
+    
+        <div class="row my-4">
+            <div class="col-md-3">
+                <label for="regionSelect">Region</label> 
+                <select class="form-control" id="regionSelect" onchange="filterByRegion()">
+                    <option value="all">All Regions</option>
+                    <option value="US East">US East</option>
+                    <option value="US West">US West</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Asia Pacific">Asia Pacific</option>
+                    <option value="India">India(New  Dehli)</option>
+                            <option value="US East">US East</option>
+                            <option value="US West">US West</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Asia Pacific">Asia Pacific</option>
+                            <option value="India">South India(Mumbai)</option>
+                            <option value="South korea">South Korea(Busan)</option>
+                            <option value="United States">United States(Washington, D.C)</option> 
+                            <option value="Canada">Canada(Ottawa)</option>
+                            <option value="United Kingdom">United Kingdom(London)</option>
+                            <option value="Australia">Australia(Canberra)</option>
+                            <option value="Germany">Germany(Berlin)</option>
+                            <option value="France">France(Paris)</option>
+                            <option value="Japan">Japan(Tokyo)</option>
+                            <option value="Brazil">Brazil(Brasília)</option>
+                            <option value="South Africa">South Africa(Pretoria)</option>
+                            <option value="Greece">Greece(Athens)</option>
+                            <option value="Sweden">Sweden(Stockholm)</option>
+                            <option value="Norway">Norway(Oslo)</option>
+                            <option value="Finland">Finland(Helsinki)</option>
+                            <option value="Netherlands">Netherlands(Amsterdam)</option>
+                            <option value="New Zealand">New Zealand(Wellington)</option>
+                            <option value="Kazakhstan">Kazakhstan(Nur-Sultan)</option>
+                            <option value="Bangladesh">Bangladesh(Dhaka)</option>
+                            <option value="Israel">Israel(Jerusalem)</option>
+                            <option value="UAE">UAE(AbuDhabi)</option>
+                            <option value="Saudi Arabia">Saudi Arabia(Riyadh)</option>
+                            <option value="Peru">Peru(Lima)</option>
+                            <option value="Colombia">Colombia(Bogotá)</option>
+                            <option value="Malaysia">Malaysia(KualaLumpur)</option>
+                            <option value="Chile">Chile(Santiago)</option>
+                            <option value="Philippines">Philippines(Manila)</option>
+                            <option value="Vietnam">Vietnam(Hanoi)</option>
+                            <option value="Canada">Canada(Ottawa)</option>
+                </select>
+            </div>
+           
+                    
+            <div class="col-md-3">
+                <label for="pricingUnitSelect">Pricing Unit</label>
+                <header-right>
+                    <select class="form-control" id="pricingUnitSelect" onchange="filterTable()">
+
+                        
+                <option value="GiB">Instance</option>
+                            <option value="vCPUs">vCPUs</option>
+                            <option value="number">Memory</option>
+                           
+                </select>
+            </header-right>
+        </div>
+            <div class="col-md-3">
+                <label for="costFilter">Cost</label>
+                <select class="form-control" id="costFilter" onchange="filterTable()">
+                    <option value="Yearly">Yearly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Hourly">Hourly</option>
+                    
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="discountFilter">Committed Use Discounts</label>
+                <select class="form-control" id="discountFilter" onchange="filterTable()" >
+                    <option value="Yearly">1-year - Savings Plan</option>
+                    <option value="Yearly">3-year - Savings Plan</option>
+                </select>
+            </div>
+        </div> 
+</head>
+<body>
+   <DIv></DIv>
+            <button class="compare-btn" onclick="compareSelected()">Compare Selected</button>
+            <button class="clear-btn" onclick="clearFilters()">Clear Filters</button>
+            <div class="search-container">
+            <header class="filter-row">
+                <th><input type="text" placeholder="search"></th>
+            </div>
+        </tr>
+    </div>
+            <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+        
+                <th>Name</th>
+                <th>API Name</th>
+                <th>Instance Memory</th>
+                <th>vCPUs</th>
+                <th>Instance Storage</th>
+                <th>Linux On Demand Cost</th>
+                <th>Linux Savings Plan</th>
+                <th>Linux Reserved Cost</th>
+                <th>Linux Spot Cost</th>
+                <th>Windows On Demand Cost</th>
+                <th>Windows Savings Plan</th>
+                <th>Windows Reserved Cost</th>
+                <th>Windows Spot Cost</th>
+            </tr>
+            <tr class="filter-row">
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter.."></th>
+                <th><input type="text" placeholder="Min Mem: 0"></th>
+                <th><input type="text" placeholder="Min GPUs: 0"></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+                <th><input type="text" placeholder="Filter..."></th>
+            </tr>
+           
+<body> 
+        <tbody>
+
+            <tbody id="pricingTable">
+             
+                <tr data-region="US East">
+                    <td>Standard A7</td>
+                    <td>A7</td>
+                    <td>56.0 GiB</td>
+                    <td>8 vCPUs</td>
+                    <td>605</td>
+                    <td>$1.000 hourly</td>
+                    <td>unavailable</td>
+                    <td>unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                    <td>available</td>
+                </tr>
+                <tr data-region="US West">
+                    <td>Standard v2</td>
+                    <td> v2</td>
+                    <td>144.0 GiB</td>
+                    <td>72 vCPUs</td>
+                    <td>576</td>
+                    <td>$3.045 hourly</td>
+                    <td>$2.0587 hourly</td>
+                    <td>$1.7993 hourly</td>
+                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                </tr>
+                <tr data-region="Europe">
+                    <td>Standard v5</td>
+                    <td>v5</td>
+                    <td>880.0 GiB</td>
+                    <td>72 vCPUs</td>
+                    <td>1400</td>
+                    <td>$6.520 hourly</td>
+                    <td>$5.4272 hourly</td>
+                    <td>$4.1728 hourly</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                    <td>available</td>
+                </tr>
+                <tr data-region="Asia Pacific">
+
+                    <td>Standard v4</td>
+                    <td>v4</td>
+                    <td>640.0 GiB</td>
+                    <td>176 vCPUs</td>
+                    <td>3600</td>
+                    <td>$7.200 hourly</td>
+                    <td>$5.9933 hourly</td>
+                    <td>$5.4001 hourly</td>
+                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                </tr>
+                <tr data-region="US East">
+                    <td>Standard A1</td>
+                    <td>A2</td>
+                    <td>1300.0 GiB</td>
+                    <td>176 vCPUs</td>
+                    <td>3600</td>
+                    <td>$8.640 hourly</td>
+                    <td>$7.1919 hourly</td>
+                    <td>$6.4799 hourly</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                    <td>available</td>
+                </tr>
+                <tr data-region="Europe">
+                    <td>Standard A1</td>
+                    <td>v3</td>
+                    <td>1536.0 GiB</td>
+                    <td>176 vCPUs</td>
+                    <td>4000</td>
+                    <td>$15.340 hourly</td>
+                    <td>$10.4312 hourly</td>
+                    <td>$9.0511 hourly</td>
+                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                </tr>
+                    
+                    <tr data-region="South India">
+                        <td>Standard B2</td>
+                        <td>B2</td>
+                        <td>32.0 GIB</td>
+                        <td>4 vCPUs</td>
+                        <td>300</td>
+                        <td>$0.500 hourly</td>
+                        <td>available</td>
+                        <td>available</td>
+                        <td>Unavailable</td>
+                        <td>$0.9686 Hourly</td>
+                        <td>7.1234 hourly</td>
+                        <td>available</td>
+                        <td>available</td>
+                    </tr>
+                    <tr data-region="South Korea">
+                        <td>Standard A8</td>
+                        <td>A8</td>
+                        <td>64.0 GiB</td>
+                        <td>16 vCPUs</td>
+                        <td>800</td>
+                        <td>$2.000 hourly</td>
+                        <td>available</td>
+                        <td>unavailable</td>
+                        <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                    </tr>
+                    <tr data-region="Germany">
+                        <td>Standard D4</td>
+                        <td>D4</td>
+                        <td>128.0 GiB</td>
+                        <td>16 vCPUs</td>
+                        <td>1000</td>
+                        <td>$3.500 hourly</td>
+                        <td>available</td>
+                        <td>available</td>
+                        <td>Unavailable</td>
+                        <td>$0.9686 Hourly</td>
+                        <td>7.1234 hourly</td>
+                        <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                    </tr>
+                    <tr data-region="Canada">
+                        <td>Standard A4</td>
+                        <td>A4</td>
+                        <td>56.0 GiB</td>
+                        <td>8 vCPUs</td>
+                        <td>500</td>
+                        <td>$1.200 hourly</td>
+                        <td>available</td>
+                        <td>unavailable</td>
+                        <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>7.1234 hourly</td>
+                    </tr>
+                    <tr data-region="Brazil">
+                        <td>Standard B4</td>
+                        <td>B4</td>
+                        <td>64.0 GiB</td>
+                        <td>8 vCPUs</td>
+                        <td>400</td>
+                        <td>$0.800 hourly</td>
+                        <td>available</td>
+                        <td>available</td>
+                        <td>Unavailable</td>
+                        <td>$0.9686 Hourly</td>
+                        <td>7.1234 hourly</td>
+                        <td>7.1234 hourly</td>
+                        <td>available</td>
+                    </tr>
+                    <tr data-region="Australia">
+                        <td>Standard D2</td>
+                        <td>D2</td>
+                        <td>128.0 GiB</td>
+                        <td>16 vCPUs</td>
+                        <td>700</td>
+                        <td>$2.500 hourly</td>
+                        <td>unavailable</td>
+                        <td>available</td>
+                        <td>Unavailable</td>
+                        <td>$0.9686 Hourly</td>
+                        <td>7.1234 hourly</td>
+                        <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                    </tr>
+                    <tr data-region="India">
+                        <td>Standard A6</td>
+                        <td>A6</td>
+                        <td>56.0 GiB</td>
+                        <td>8 vCPUs</td>
+                        <td>605</td>
+                        <td>$1.000 hourly</td>
+                        <td>available</td>
+                        <td>unavailable</td>
+                        <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>7.1234 hourly</td>
+                    </tr>
+                    
+                        <tr data-region="Greece">
+                            <td>Standard C2</td>
+                            <td>C2</td>
+                            <td>64.0 GiB</td>
+                            <td>8 vCPUs</td>
+                            <td>400 </td>
+                            <td>$1.500 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td>
+                            <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                        </tr>
+                        <tr data-region="Sweden">
+                
+                            <td>Standard C4</td>
+                            <td>C4</td>
+                            <td>128.0 GiB</td>
+                            <td>16 vCPUs</td>
+                            <td>800</td>
+                            <td>$2.200 hourly</td>
+                            <td>available</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>7.1234 hourly</td>
+                        </tr>
+                        <tr data-region="Norway">
+                            <td>Standard D4</td>
+                            <td>D4</td>
+                            <td>128.0 GiB</td>
+                            <td>16 vCPUs</td>
+                            <td>1000</td>
+                            <td>$2.800 hourly</td>
+                            <td>unavailable</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td>
+                            <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+
+                        </tr>
+                        <tr data-region="Finland">
+                            <td>Standard B4</td>
+                            <td>B4</td>
+                            <td>64.0 GiB</td>
+                            <td>8 vCPUs</td>
+                            <td>400</td>
+                            <td>$1.100 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                        </tr>
+                        <tr data-region="Netherlands">
+                            <td>Standard A2</td>
+                            <td>A2</td>
+                            <td>32.0 GiB</td>
+                            <td>4 vCPUs</td>
+                            <td>250</td>
+                            <td>$0.900 hourly</td>
+                            <td>available</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>unavailable</td>
+                        </tr>
+                        <tr data-region="Portugal">
+                            <td>Standard C3</td>
+                            <td>C3</td>
+                            <td>64.0 GiB</td>
+                            <td>8 vCPUs</td>
+                            <td>600</td>
+                            <td>$1.300 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td><td>7.1234 hourly</td>
+                            <td>unavailable</td>
+
+                        </tr>
+                        <tr data-region="Ireland">
+                            <td>Standard A3</td>
+                            <td>A3</td>
+                            <td>56.0 GiB</td>
+                            <td>8 vCPUs</td>
+                            <td>550</td>
+                            <td>$1.000 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td>
+                            <td>7.1234 hourly</td>
+                    <td>unavailable</td>
+                        </tr>
+                        <tr data-region="Vietnam">
+                            <td>Standard B2</td>
+                            <td>B2</td>
+                            <td>32.0 GiB</td>
+                            <td>4 vCPUs</td>
+                            <td>300</td>
+                            <td>$0.600 hourly</td>
+                            <td>available</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                        </tr>
+                        <tr data-region="Philippines">
+                            <td>Standard B3</td>
+                            <td>B3</td>
+                            <td>48.0 GiB</td>
+                            <td>6 vCPUs</td>
+                            <td>400</td>
+                            <td>$0.750 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td>
+                            <td>7.1234 hourly</td>
+                    <td>unavailable</td>
+
+                        </tr>
+                        <tr data-region="Malaysia">
+                            <td>Standard A5</td>
+                            <td>A5</td>
+                            <td>48.0 GiB</td>
+                            <td>6 vCPUs</td>
+                            <td>350</td>
+                            <td>$0.900 hourly</td>
+                            <td>available</td>
+                            <td>unavailable</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>unavailable</td>
+                    
+                        </tr>
+                        <tr data-region="Chile">
+                            <td>Standard D3</td>
+                            <td>D3</td>
+                            <td>64.0 GiB</td>
+                            <td>8 vCPUs</td>
+                            <td>400</td>
+                            <td>$1.100 hourly</td>
+                            <td>available</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                            <td>$0.9686 Hourly</td>
+                            <td>7.1234 hourly</td>
+                            <td>unavailable</td>
+                                    <td>Unavailable</td>
+                        </tr>
+                        <tr data-region="Colombia">
+                            <td>Standard B1</td>
+                            <td>B1</td>
+                            <td>16.0 GiB</td>
+                            <td>2 vCPUs</td>
+                            <td>200</td>
+                            <td>$0.400 hourly</td>
+                            <td>available</td>
+                            <td>available</td>
+                            <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                        </tr>
+                                <tr data-region="India">
+                                    <td>Standard A6</td>
+                                    <td>A6</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+
+
+                                </tr>
+                                <tr data-region="US East">
+                                    <td>Standard A7</td>
+                                    <td>A7</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>unavailable</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>available</td>
+                                    <td>9.8765 hourly</td>
+                                    
+                                </tr>
+                                <tr data-region="US West">
+                                    <td>Standard A7</td>
+                                    <td>A7</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>6.8976 hourly</td>
+                                    
+                                </tr>
+                                <tr data-region="Europe">
+                                    <td>Standard D4</td>
+                                    <td>D4</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>1000</td>
+                                    <td>$3.500 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>6.8976 hourly</td>
+                                    <td>available</td>
+                                </tr>
+                                <tr data-region="Asia Pacific">
+                                    <td>Standard A6</td>
+                                    <td>A6</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                                </tr>
+                                <tr
+                                 data-region="South India">           
+                    <td>Standard A1</td>
+                    <td>A2</td>
+                                   
+                                    <td>32.0 GiB</td>
+                                    <td>4 vCPUs</td>
+                                    <td>300</td>
+                                    <td>$0.500 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>0.9876 hourly</td>
+                                    <td>3.4675 hourly</td>
+                                    <td>available</td>
+                                </tr>
+                                <tr data-region="South Korea">
+                                    <td>Standard A8</td>
+                                    <td>A8</td>
+                                    <td>64.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>800</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>0.9876 hourly</td>
+                                    <td>available</td>
+                                </tr>
+                                <tr data-region="United States">
+                                    <td>Standard A6</td>
+                                    <td>D6</td>
+                                    <td>A6</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                                </tr>
+                                <tr data-region="Canada">
+                                    <td>Standard A4</td>
+                                    <td>A4</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>500</td>
+                                    <td>$1.200 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="United Kingdom">
+                                    <td>Standard A4</td>
+                                    <td>A4</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>500</td>
+                                    <td>$1.200 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>unavailable</td>
+                                    
+                                </tr>
+                                <tr data-region="Australia">
+                                    <td>Standard D2</td>
+                                    <td>D2</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>700</td>
+                                    <td>$2.500 hourly</td>
+                                    <td>unavailable</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                                </tr>
+                                <tr data-region="Germany">
+                                    <td>Standard D4</td>
+                                    <td>D4</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>1000</td>
+                                    <td>$3.500 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>unavailable</td>
+                                </tr>
+                                <tr data-region="France">
+                                    <td>Standard A4</td>
+                                    <td>A4</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>500</td>
+                                    <td>$1.200 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                                    <td>$0.9686 Hourly</td>
+                                    <td>7.1234 hourly</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>unavailable</td>
+                                </tr>
+                                <tr data-region="Japan">
+                                    <td>Standard A8</td>
+                                    <td>A8</td>
+                                    <td>64.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>800</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="Brazil">
+                                    <td>Standard B4</td>
+                                    <td>B4</td>
+                                    <td>64.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>400</td>
+                                    <td>$0.800 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="South Africa">
+                                    <td>Standard C4</td>
+                                    <td>C4</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>1000</td>
+                                    <td>$3.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="Greece">
+                                    <td>Standard C2</td>
+                                    <td>C2</td>
+                                    <td>64.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>400</td>
+                                    <td>$1.500 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="Sweden"> 
+                                    <td>Standard C4</td>
+                                    <td>C4</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>800</td>
+                                    <td>$2.200 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="Norway">
+                                    <td>Standard D4</td>
+                                    <td>D4</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>1000</td>
+                                    <td>$2.800 hourly</td>
+                                    <td>unavailable</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+
+                                </tr>
+                                <tr data-region="Finland"> 
+                                    <td>Standard B4</td>
+                                    <td>B4</td>
+                                    <td>64.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>400</td>
+                                    <td>$1.100 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>available</td>
+                                </tr>
+                                <tr data-region="Netherlands">
+                                    <td>Standard A2</td>
+                                    <td>A2</td>
+                                    <td>32.0 GiB</td>
+                                    <td>4 vCPUs</td>
+                                    <td>250</td>
+                                    <td>$0.900 hourly</td>
+                                    <td>available</td>
+
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                    <td>$0.900 hourly</td>
+                    <td>available</td>
+                            <tr data-region="New Zealand">
+                                <td>Standard A3</td>
+                                <td>A3</td>
+                                <td>56.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>550</td>
+                                <td>$1.000 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Kazakhstan">
+                                <td>Standard C3</td>
+                                <td>C3</td>
+                                <td>64.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>600</td>
+                                <td>$1.300 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Bangladesh">
+                                <td>Standard B2</td>
+                                <td>B2</td>
+                                <td>32.0 GiB</td>
+                                <td>4 vCPUs</td>
+                                <td>300</td>
+                                <td>$0.500 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Israel">
+                                <td>Standard A6</td>
+                                <td>A6</td>
+                                <td>56.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>605</td>
+                                <td>$1.000 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="UAE">
+                                <td>Standard B4</td>
+                                <td>B4</td>
+                                <td>64.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>400</td>
+                                <td>$0.800 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Saudi Arabia">
+                                <td>Standard A6</td>
+                                <td>A6</td>
+                                <td>56.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>605</td>
+                                <td>$1.000 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Peru">
+                                <td>Standard B1</td>
+                                <td>B1</td>
+                                <td>16.0 GiB</td>
+                                <td>2 vCPUs</td>
+                                <td>200</td>
+                                <td>$0.400 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Colombia">
+                                <td>Standard B1</td>
+                                <td>B1</td>
+                                <td>16.0 GiB</td>
+                                <td>2 vCPUs</td>
+                                <td>200</td>
+                                <td>$0.400 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Malaysia">
+                                <td>Standard A5</td>
+                                <td>A5</td>
+                                <td>48.0 GiB</td>
+                                <td>6 vCPUs</td>
+                                <td>350</td>
+                                <td>$0.900 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Chile">
+                                <td>Standard D3</td>
+                                <td>D3</td>
+                                <td>64.0 GiB</td>
+                                <td>8 vCPUs</td>
+                                <td>400</td>
+                                <td>$1.100 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Philippines">
+                                <td>Standard B3</td>
+                                <td>B3</td>
+                                <td>48.0 GiB</td>
+                                <td>6 vCPUs</td>
+                                <td>400</td>
+                                <td>$0.750 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Vietnam">
+                                <td>Standard B2</td>
+                                <td>B2</td>
+                                <td>32.0 GiB</td>
+                                <td>4 vCPUs</td>
+                                <td>300</td>
+                                <td>$0.600 hourly</td>
+                                <td>available</td>
+                                <td>available</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="South Korea">
+                                <td>Standard A8</td>
+                                <td>A8</td>
+                                <td>64.0 GiB</td>
+                                <td>16 vCPUs</td>
+                                <td>800</td>
+                                <td>$2.000 hourly</td>
+                                <td>available</td>
+                                <td>unavailable</td>
+                                <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                            </tr>
+                            <tr data-region="Netherlands">
+                                    <td>Standard A7</td>
+                                    <td>A7</td>
+                                    <td>56.0 GiB</td>
+                                    <td>8 vCPUs</td>
+                                    <td>605</td>
+                                    <td>$1.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                                </tr>
+                                <tr data-region="South Korea">
+                                    <td>Standard A8</td>
+                                    <td>A8</td>
+                                    <td>64.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>800</td>
+                                    <td>$2.000 hourly</td>
+                                    <td>available</td>
+                                    <td>unavailable</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+
+                                </tr>
+                                <tr data-region="United States">
+                                    <td>Standard D8</td>
+                                    <td>D8</td>
+                                    <td>128.0 GiB</td>
+                                    <td>16 vCPUs</td>
+                                    <td>1,000</td>
+                                    <td>$3.000 hourly</td>
+                                    <td>available</td>
+                                    <td>available</td>
+                                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+                    <td>$0.9686 Hourly</td>
+                    <td>7.1234 hourly</td>
+                    <td>Unavailable</td>
+                                </tr>
+                                
+                </table>
+                
+            </tbody>
+        </table>
+    </div                    
+>
+    </body>
+    <script>
+
+        function filterByRegion() {
+            const selectedRegion = document.getElementById("regionSelect").value;
+            const rows = document.querySelectorAll("#pricingTable tr");
+            
+            rows.forEach(row => {
+                const region = row.getAttribute("data-region");
+                if (selectedRegion === "all" || region === selectedRegion) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+
+        </Script>
+        <script>
+          
+
+let allData = []; // To store all API data for filtering
+let filteredData = []; // Store filtered results based on user selections
+
+// Fetch data from the API and populate filters
+async function fetchData() {
+    try {
+        const response = await fetch('https://prices.azure.com/api/retail/prices?api-version=2023-01-01-preview');
+        const data = await response.json();
+        allData = data.Items;
+        populateFilters();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+// Populate filter options dynamically
+function populateFilters() {
+    const regionSet = new Set();
+    const pricingUnitSet = new Set();
+    const costSet = new Set();
+    const discountSet = new Set();
+
+    allData.forEach(item => {
+        if (item.armRegionName) regionSet.add(item.armRegionName);
+        if (item.unitOfMeasure) pricingUnitSet.add(item.unitOfMeasure);
+        if (item.retailPrice) costSet.add(item.retailPrice);
+        if (item.commitmentTerm) discountSet.add(item.commitmentTerm);
+    });
+
+    populateSelect('region', Array.from(regionSet));
+    populateSelect('pricingUnit', Array.from(pricingUnitSet));
+    populateSelect('cost', Array.from(costSet));
+    populateSelect('discount', Array.from(discountSet));
+}
+
+// Helper function to populate each select dropdown
+function populateSelect(selectId, options) {
+    const select = document.getElementById(selectId);
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option;
+        opt.textContent = option;
+        select.appendChild(opt);
+    });
+}
+
+// Filter data based on selected filter values
+function fetchAndFilterData() {
+    const region = document.getElementById('region').value;
+    const pricingUnit = document.getElementById('pricingUnit').value;
+    const cost = document.getElementById('cost').value;
+    const discount = document.getElementById('discount').value;
+
+    filteredData = allData.filter(item =>
+        (!region || item.armRegionName === region) &&
+        (!pricingUnit || item.unitOfMeasure === pricingUnit) &&
+        (!cost || item.retailPrice === parseFloat(cost)) &&
+        (!discount || item.commitmentTerm === discount)
+    );
+
+    displayFilteredData();
+}
+
+// Display filtered data
+function displayFilteredData() {
+    const suggestionsContainer = document.getElementById('suggestions');
+    suggestionsContainer.innerHTML = '';
+
+    filteredData.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.productName} - $${item.retailPrice}`;
+        suggestionsContainer.appendChild(li);
+    });
+}
+
+// Search box functionality with filtering
+function filterSearch() {
+    const query = document.getElementById('searchBox').value.toLowerCase();
+
+    const results = filteredData.filter(item => item.productName.toLowerCase().includes(query));
+    const suggestionsContainer = document.getElementById('suggestions');
+    suggestionsContainer.innerHTML = '';
+
+    results.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.productName} - $${item.retailPrice}`;
+        suggestionsContainer.appendChild(li);
+    });
+}
+
+// Clear filters and reset dropdowns
+function clearFilters() {
+    document.getElementById('region').value = '';
+    document.getElementById('pricingUnit').value = '';
+    document.getElementById('cost').value = '';
+    document.getElementById('discount').value = '';
+    document.getElementById('searchBox').value = '';
+    filteredData = allData;
+    displayFilteredData();
+}
+
+// Placeholder function for compare feature
+function compareSelected() {
+    alert('Compare feature is under construction!');
+}
+
+// Fetch initial data when the page loads
+fetchData();
+</script>
+<script>
+            function filterTable() {
+                const rows = document.querySelectorAll("#pricingTable tbody tr");
+            
+                // Get filter values
+                const selectedRegion = document.getElementById("regionSelect").value;
+                const selectedUnit = document.getElementById("pricingUnitSelect").value;
+                const selectedCost = document.getElementById("costFilter").value;
+            
+                rows.forEach(row => {
+                    const cells = row.getElementsByTagName("td");
+                    const region = row.getAttribute("data-region");
+                    const unit = cells.textContent
+                    const cost = cells.textContent; // Replace with actual index
+                    
+                    let showRow = true; // Flag to determine if the row should be shown
+            
+                    // Check region filtering
+                    if (selectedRegion !== "all" && region !== selectedRegion) {
+                        showRow = false; // Hide if region does not match
+                    }
+            
+                    // Check pricing unit filtering
+                    if (selectedUnit && unit !== selectedUnit) {
+                        showRow = false; // Hide if pricing unit does not match
+                    }
+            
+                    // Check cost filtering
+                    if (selectedCost && cost !== selectedCost) {
+                        showRow = false; // Hide if cost does not match
+                    }
+            
+                    // Show or hide the row based on the combined flags
+                    row.style.display = showRow ? "" : "none";
+                });
+            }
+            </script>
+            <script src="app.js"></script>
+            <script>src="server.js"</script>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+                <style>
+                    .data-row {
+                        margin: 10px 0;
+                    }
+                    .compare-btn, .clear-btn, .export-btn {
+                        margin-right: 10px;
+                        padding: 5px 10px;
+                    }
+                </style>
+            </head>
+            <body>
+            
+            
+                     
+            
+        
+
+</body>
+</html>

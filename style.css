@@ -1,0 +1,367 @@
+/* General styling */
+head
+.header-right .export-button:hover {
+    background-color: #0056b3;
+}
+                    /* General reset */
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+            
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+            
+                    /* Header styles */
+                    .header {
+                        border-bottom: 1px solid #e0e0e0;
+                    }
+            
+                    .top-bar {
+                        background-color: #222;
+                        color: #fff;
+                        padding: 10px;
+                        font-size: 14px;
+                        text-align: center;
+                    }
+            
+                    .controls {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        gap: 10px;
+                        background-color: #fff;
+                    }
+            
+                    .dropdowns select {
+                        padding: 8px;
+                        border-radius: 5px;
+                        border: 1px solid #ddd;
+                        outline: none;
+                        font-size: 14px;
+                        cursor: pointer;
+                    }
+            
+                    .compare-btn {
+                        background-color: #d96ff7;
+                        color:#f5f5f5;
+                        border: none;
+                        padding: 8px 15px;
+                        font-weight: bold;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+            
+                    .clear-btn, .export-btn {
+                        background-color: #f5f5f5;
+                        color: #333;
+                        border: 1px solid #ddd;
+                        padding: 8px 15px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+            
+                    .clear-btn:hover, .export-btn:hover, .compare-btn:hover {
+                        background-color: #e2e2e2;
+                    }
+                    #searchBox {
+                        width: 100%;
+                        padding: 10px;
+                        font-size: 16px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                    }
+                    
+                    #suggestions {
+                        list-style-type: none;
+                        padding: 0;
+                        margin-top: 5px;
+                        border: 1px solid #ccc;
+                        border-top: none;
+                        max-height: 150px;
+                        overflow-y: auto;
+                    }
+            
+                    input[type="text"] {
+                        padding: 8px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        outline: none;
+                        width: 200px;
+                        font-size: 14px;
+                    }
+            
+                    .data-display {
+                        padding: 20px;
+                    }
+            
+                    .data-row {
+                        padding: 10px;
+                        border-bottom: 1px solid #e0e0e0;
+                    }
+                
+body
+
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color:#ffffff;
+    box-shadow: 0px 4px 8px rgba(19, 19, 19, 0.1);
+} 
+/* Table styling */
+.header-right
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+/* Header styling */
+thead th {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Input styling */
+thead th input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background-color: #e9f7ff;
+    cursor: pointer;
+}
+
+/* Cell styling */
+th, td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: middle;
+}
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header styling */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-left select,
+.header-right .search-input {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.header-right .export-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header-right .export-button:hover {
+    background-color: #0056b3;
+}
+
+/* Container styling */
+:host-context()
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+.header-right
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Header styling */
+thead th {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Input styling */
+thead th input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #495057;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background-color: #e9f7ff;
+    cursor: pointer;
+}
+
+/* Cell styling */
+th, td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: middle;
+}
+.filter-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+  }
+  
+  .header {
+    background-color: #4A4A4A;
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .header a {
+    color: #FFD700;
+    text-decoration: none;
+  }
+  
+  /* Filter bar styling */
+  .table-controls {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background-color: #e9ecef;
+    justify-content: center;
+  }
+  
+  .table-controls select, .table-controls button {
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  #compare-btn, #clear-btn {
+    background-color: #6c5ce7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  #compare-btn:hover, #clear-btn:hover {
+    background-color: #5a4cbf;
+  }
+  
+  /* Table styling */
+  .table-container {
+    padding: 20px;
+    width: 95%;
+    margin: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    position: relative;
+  }
+  
+  th .filter-input {
+    margin-top: 5px;
+    width: 90%;
+    padding: 4px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #fdf3f8; /* Light purple for alternate rows */
+  }
+  
+  tr:hover {
+    background-color: #e2e6ea;
+  }
+  
